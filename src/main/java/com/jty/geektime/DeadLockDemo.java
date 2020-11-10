@@ -1,7 +1,10 @@
 package com.jty.geektime;
 
+import com.jty.geektime.entity.Account;
+
 /**
  * 演示死锁
+ * 两个线程。一个从账户a到b转100元，另一个从账户b到a转100元。
  */
 public class DeadLockDemo {
 
@@ -12,7 +15,7 @@ public class DeadLockDemo {
 		Account b = new Account();
 		b.setBalance(200);
 
-		// 两个线程。一个从账户a到b转100元，另一个从账户b到a转100元。
+
 		Thread aToB = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -31,37 +34,8 @@ public class DeadLockDemo {
 		});
 		bToA.start();
 
-
-
 	}
 
 }
 
 
-class Account {
-	private int balance;
-	// 转账
-	void transfer(Account target, int amt){
-		synchronized(this){
-			try {
-				Thread.sleep(1000); // 为了让死锁现象明显
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			synchronized(target){
-				if (this.balance > amt){
-					this.balance -= amt;
-					target.balance += amt;
-				}
-			}
-		}
-	}
-
-	public int getBalance() {
-		return balance;
-	}
-
-	public void setBalance(int balance) {
-		this.balance = balance;
-	}
-}
