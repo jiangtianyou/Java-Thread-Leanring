@@ -15,7 +15,7 @@ public class AccountV2 {
 	public void transfer(AccountV2 target, int amt){
 		allocator.apply(this, target); //申请共享资源 让其他线程进入等待队列
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(10);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
