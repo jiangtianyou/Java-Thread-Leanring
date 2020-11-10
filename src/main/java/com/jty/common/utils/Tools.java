@@ -1,5 +1,6 @@
-package com.jty.utils;
+package com.jty.common.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import sun.misc.Unsafe;
 
 import java.io.*;
@@ -12,6 +13,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Slf4j
 public final class Tools {
 	private static final Random rnd = new Random();
 	private static final Logger LOGGER = Logger.getAnonymousLogger();
@@ -147,7 +149,7 @@ public final class Tools {
 	}
 
 	public static void delayedAction(String prompt, Runnable action, int delay/* seconds */) {
-		Debug.info("%s in %d seconds.", prompt, delay);
+		log.info("{} in {} seconds.", prompt, delay);
 		try {
 			Thread.sleep(delay * 1000);
 		} catch (InterruptedException ignored) {

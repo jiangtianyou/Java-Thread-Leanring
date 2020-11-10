@@ -1,4 +1,4 @@
-package com.jty.utils;
+package com.jty.common.utils;
 
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;

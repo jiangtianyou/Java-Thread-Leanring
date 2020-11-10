@@ -1,8 +1,7 @@
 package com.jty;
 
-import com.jty.utils.Debug;
-import com.jty.utils.Tools;
-
+import com.jty.common.utils.Tools;
+import lombok.extern.slf4j.Slf4j;
 
 
 /**
@@ -11,6 +10,7 @@ import com.jty.utils.Tools;
  * 核心在于RequestIDGenerator.nextGenerator是被并发访问的，但是并没有做访问控制
  */
 
+@Slf4j
 public class RaceConditionDemo {
 
 
@@ -20,7 +20,7 @@ public class RaceConditionDemo {
 				.getRuntime().availableProcessors();
 		Thread[] workerThreads = new Thread[numberOfThreads];
 
-		Debug.info("一共%s个请求",numberOfThreads);
+		log.info("一共{}个请求",numberOfThreads);
 		for (int i = 0; i < numberOfThreads; i++) {
 			workerThreads[i] = new WorkerThread(i, 10);
 		}

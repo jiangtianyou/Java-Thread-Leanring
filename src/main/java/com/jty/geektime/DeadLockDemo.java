@@ -12,8 +12,7 @@ public class DeadLockDemo {
 		Account b = new Account();
 		b.setBalance(200);
 
-		// 两个线程 a -> b 100 b -> a 100
-
+		// 两个线程。一个从账户a到b转100元，另一个从账户b到a转100元。
 		Thread aToB = new Thread(new Runnable() {
 			@Override
 			public void run() {
