@@ -1,4 +1,4 @@
-package com.jty.geektime;
+package com.jty.geektime.demo;
 
 import com.jty.geektime.entity.AccountV2;
 import lombok.extern.slf4j.Slf4j;
