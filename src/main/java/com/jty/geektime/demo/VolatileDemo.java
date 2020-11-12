@@ -1,5 +1,6 @@
 package com.jty.geektime.demo;
 
+import com.jty.common.utils.Tools;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -15,6 +16,7 @@ public class VolatileDemo {
 	public static void main(String[] args) {
 
 		Thread thread = new Thread(() -> {
+			Tools.sleep(2000);
 			for (int i = 1; i <= times; i++) {
 				count++;
 			}
@@ -24,9 +26,9 @@ public class VolatileDemo {
 		for (int i = 1; i <= times; i++) {
 			count--;
 		}
-		// 等所有线程执行完成
-		while (thread.isAlive());
 
+		Tools.join(thread);
+		log.info("child thread is alive: {} ", thread.isAlive());
 		log.info("count value : {}", count);
 	}
 

@@ -52,9 +52,15 @@ public final class Tools {
 			t.join();
 		}
 	}
-
 	public static void randomPause(int maxPauseTime) {
 		int sleepTime = rnd.nextInt(maxPauseTime);
+		try {
+			Thread.sleep(sleepTime);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+		}
+	}
+	public static void sleep(int sleepTime) {
 		try {
 			Thread.sleep(sleepTime);
 		} catch (InterruptedException e) {
@@ -160,6 +166,14 @@ public final class Tools {
 	public static Object newInstanceOf(String className) throws InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
 		return Class.forName(className).newInstance();
+	}
+
+	public static void join(Thread target){
+		try {
+			target.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
