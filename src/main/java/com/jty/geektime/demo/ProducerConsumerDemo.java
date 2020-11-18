@@ -45,7 +45,7 @@ class Producer extends Thread{
 			UUID element = UUID.randomUUID();
 			log.info("添加一个元素: {}", element.toString());
 			try {
-				queue.add(element);
+				queue.put(element);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -64,7 +64,7 @@ class Consumer extends Thread{
 		while (true) {
 			UUID poll = null;
 			try {
-				poll = queue.element();
+				poll = queue.take();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
