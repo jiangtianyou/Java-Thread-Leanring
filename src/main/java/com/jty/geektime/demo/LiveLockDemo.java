@@ -26,7 +26,7 @@ public class LiveLockDemo {
 
 		public void eatWith(Spoon spoon, Diner spouse) {
 			while (isHungry) {
-				// Don't have the spoon, so wait patiently for spouse.
+				// Don't have the spoon, so wait patiently for spouse. 下面的两个if代表夫妇疯狂谦让
 				if (spoon.owner != this) {
 					try { Thread.sleep(1); }
 					catch(InterruptedException e) { continue; }
@@ -42,7 +42,7 @@ public class LiveLockDemo {
 					continue;
 				}
 
-				// Spouse wasn't hungry, so finally eat
+				// 下面代表有人真正的拿着勺子吃饭
 				spoon.use();
 				isHungry = false;
 				System.out.printf(
