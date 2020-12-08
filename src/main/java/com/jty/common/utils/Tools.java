@@ -3,6 +3,7 @@ package com.jty.common.utils;
 import lombok.extern.slf4j.Slf4j;
 import sun.misc.Unsafe;
 
+import javax.swing.plaf.synth.SynthRadioButtonMenuItemUI;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.math.BigInteger;
@@ -127,6 +128,12 @@ public final class Tools {
 	public static void log(String message) {
 		LOGGER.log(Level.INFO, message);
 	}
+
+	public static void printThreadName() {
+		String name = Thread.currentThread().getName();
+		System.out.println(name);
+	}
+
 
 	public static String md5sum(final InputStream in) throws NoSuchAlgorithmException, IOException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
